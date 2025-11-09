@@ -21,9 +21,9 @@ Todos:
 - [x] add gitignore
 - [x] update the package.json scripts section to use --watch --env-file
 - [x] create postman collection and test the server
-- [] create db connection in database/connections.js
-- [] create an index route to show a list of books from the db
-- [] create an show route to show the single book (with reviews attached)
+- [x] create db connection in database/connections.js
+- [x] create an index route to show a list of books from the db
+- [x] create an show route to show the single book (with reviews attached)
 - [] create an express Router for the /api/books and api/books/:id
 - [] create a controller
 - [] create server errror middleware and not found
