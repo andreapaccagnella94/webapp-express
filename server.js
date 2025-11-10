@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const app = express();
 const PORT = process.env.PORT || 3000;
 // import routes
@@ -11,6 +12,9 @@ const notFound = require('./middleware/notFound');
 app.use(express.static('public'));
 // import json middleware for body parsing for send a reviews later
 app.use(express.json());
+
+// import cors middleware policy for frontend
+app.use(cors({ origin: "http://localhost:5173" }));
 
 
 app.listen(PORT, () => {
