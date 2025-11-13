@@ -44,11 +44,26 @@ function show(req, res) {
     })
 }
 
+function store(req, res) {
+    console.log(req.body);
+    const { title, director, genre, release_year, abstract, image } = req.body
+
+    const sql = 'INSERT INTO movies (title, director, genre, release_year, abstract, image) VALUES (?, ?, ?, ? ,? ,?)';
+    connection.query(sql, [title, director, genre, release_year, abstract, image], (err, results) => {
+        if (err) res.status(500).json({ error: err.message });
+        console.log(results);
+        res.status(201).json({ message: "Movie added", id: results.insertId })
+
+    })
+
+}
+
 
 
 
 
 module.exports = {
     index,
-    show
+    show,
+    store
 }
