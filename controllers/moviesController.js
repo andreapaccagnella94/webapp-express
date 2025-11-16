@@ -50,7 +50,7 @@ function store(req, res) {
     const { title, director, genre, release_year, abstract } = req.body
     const sql = 'INSERT INTO movies (title, director, genre, release_year, abstract, image) VALUES (?, ?, ?, ? ,? ,?)';
     connection.query(sql, [title, director, genre, release_year, abstract, image], (err, results) => {
-        if (err) res.status(500).json({ error: err.message });
+        if (err) return res.status(500).json({ error: err.message });
         console.log(results);
         res.status(201).json({ message: "Movie added", id: results.insertId })
 
