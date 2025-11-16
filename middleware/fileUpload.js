@@ -1,4 +1,4 @@
-const multer = require('multer')
-const upload = multer({ dest: 'uploads/' })
+/* const multer = require('multer');
+const upload = multer({ dest: 'uploads/' });
 
-module.exports = upload
+module.exports = upload */

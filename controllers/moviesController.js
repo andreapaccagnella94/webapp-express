@@ -45,9 +45,9 @@ function show(req, res) {
 }
 
 function store(req, res) {
-    console.log(req.body);
-    const { title, director, genre, release_year, abstract, image } = req.body
-
+    console.log(req.file);
+    const image = 'uploads/' + req.file.originalname
+    const { title, director, genre, release_year, abstract } = req.body
     const sql = 'INSERT INTO movies (title, director, genre, release_year, abstract, image) VALUES (?, ?, ?, ? ,? ,?)';
     connection.query(sql, [title, director, genre, release_year, abstract, image], (err, results) => {
         if (err) res.status(500).json({ error: err.message });
