@@ -13,7 +13,6 @@ function index(req, res) {
     });
 }
 
-
 function show(req, res) {
     const sql = 'SELECT * FROM movies WHERE id = ?';
     const reviewsSql = 'SELECT * FROM reviews WHERE movie_id = ?';
@@ -58,6 +57,23 @@ function store(req, res) {
 
 }
 
+function storeReviews(req, res) {
+    // console.log(req.body, req.params);
+    // get movie id
+    const movieId = Number(req.params.id)
+    const { name, vote, text } = req.body
+    console.log(movieId, name, vote, text);
+
+    const sql = "INSERT INTO reviews (`movie_id`,`name`,`vote`,`text`) VALUES(?,?,?,?)"
+    connection.query(sql, [movieId, name, vote, text], (err, results) => {
+        if (err) return res.status(500).json({ error: err.message });
+        console.log(results);
+
+        res.status(201).json({ message: `Review added for movie id: ${movieId}` })
+    })
+
+
+}
 
 
 
@@ -65,5 +81,6 @@ function store(req, res) {
 module.exports = {
     index,
     show,
-    store
+    store,
+    storeReviews
 }

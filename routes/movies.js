@@ -16,7 +16,9 @@ Router.get('/', moviesController.index);
 
 Router.get('/:id', moviesController.show);
 
-Router.post('/', upload.single('image'), moviesController.store)
+Router.post('/', upload.single('image'), moviesController.store);
+
+Router.post('/:id/reviews', moviesController.storeReviews);
 
 
 
